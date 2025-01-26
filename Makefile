@@ -3,8 +3,8 @@ CFLAGS = -g -Wall -Werror -std=c99
 
 all: csim
 
-csim: cachesim.c functions.c header.h
-	$(CC) $(CFLAGS) -o p cachesim.c functions.c -lm 
+csim: src/cachesim.c src/functions.c src/header.h
+	$(CC) $(CFLAGS) -o p src/cachesim.c src/functions.c -lm 
 
 #
 # cleanup, remember to change: flag after -o change back to cachesim
