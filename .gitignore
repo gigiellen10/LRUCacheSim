@@ -401,3 +401,6 @@ FodyWeavers.xsd
 
 # ignore cmake build directory
 /build/
+
+# temp executable im using to test
+p
