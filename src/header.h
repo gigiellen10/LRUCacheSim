@@ -33,5 +33,6 @@ typedef struct cache {
 /* function prototypes */
 void printUsageInfo();
 void runSim(FILE* traceFile, int verbose, int indexBits, int blockOffset);
+void calculateBits(long address, int* tag, int* indexVal, int indexBits, int blockOffset);
 void initCache(Cache* cache);
 void deleteCache(Cache* cache);

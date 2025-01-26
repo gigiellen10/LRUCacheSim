@@ -10,7 +10,9 @@ void runSim(FILE* traceFile, int verbose, int indexBits, int blockOffset) {
     
     int hits = 0,
         misses = 0,
-        evictions = 0;
+        evictions = 0,
+        tag = 0,
+        indexVal = 0;
 
     // declare and initialize cache obj
     Cache cache;
@@ -34,7 +36,11 @@ void runSim(FILE* traceFile, int verbose, int indexBits, int blockOffset) {
             printf("%s %s,%s ", token, address, memSize);
         }
 
-        // call caching func here
+        // convert address string into a long int for bit manipulation
+        long addy = strtol(address, NULL, 16);
+
+        // parse the address based on the # of index bits, block offset and tagBits size
+        calculateBits(addy, &tag, &indexVal, indexBits, blockOffset); 
 
         fputc('\n', stdout);
     }
@@ -98,4 +104,13 @@ void deleteCache(Cache* cache) {
     for (int i = 0; i < NUM_SETS; i++) {
         free(cache->sets);
     }
+}
+
+/* 
+    parses the address into the correct values for the tag and indexVal, and returns
+    these values via output parameter (int*). Uses values of indexBits and blockOffset
+    to perform the necessary computations 
+*/
+void calculateBits(long address, int* tag, int* indexVal, int indexBits, int blockOffset) {
+
 }
