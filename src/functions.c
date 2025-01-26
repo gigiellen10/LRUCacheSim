@@ -8,30 +8,28 @@
 void runSim(FILE* traceFile, int verbose, int indexBits, int assoc, int blockOffset) {
     char buffer[100] = "";
     
-    // int hits = 0,
-    //     misses = 0,
-    //     evictions = 0;
+    int hits = 0,
+        misses = 0,
+        evictions = 0;
 
 
     while ( fgets(buffer, sizeof(buffer), traceFile) ) {
-        char* token = strtok(buffer, " "); 
-
-        // skip 'I' entries in valgrind file
+        char* token = strtok(buffer, " ");
+    
         if (strcmp(token, "I") == 0) {
-            continue; 
+            continue;
         }
 
-        // assume the valgrind files are well formatted
-        char* accessType = strtok(NULL, " ");
         char* address = strtok(NULL, ",");
         char* memSize = strtok(NULL, "\n");
 
-        // if we are in verbose mode, print out the above info
+        // if in verbose mode, print out
         if (verbose) {
-            printf("%s %s,%s ", accessType, address, memSize);
+            // Print parsed values (you can store or process them as needed)
+            printf("%s %s,%s ", token, address, memSize);
         }
 
-        // call miss/hit calculation functions here
+        // call caching func here
 
         fputc('\n', stdout);
     }

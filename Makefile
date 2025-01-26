@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -Werror -std=c99
+CFLAGS = -g -Wall -std=c99
 
 all: csim
 
