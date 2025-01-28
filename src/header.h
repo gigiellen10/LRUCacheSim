@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <math.h>
 #include <string.h>
+#include <limits.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -33,6 +34,11 @@ typedef struct cache {
 /* function prototypes */
 void printUsageInfo();
 void runSim(FILE* traceFile, int verbose, int indexBits, int blockOffset);
-void calculateBits(long address, int* tag, int* indexVal, int indexBits, int blockOffset);
+void calculateBits(long address, long* tag, long* indexVal, int indexBits, int blockOffset);
 void initCache(Cache* cache);
 void deleteCache(Cache* cache);
+void accessCache(Cache* cache, int index, int tag, int verbose, int* misses, int* hits, int* evictions);
+void outputStats(int hits, int misses, int evictions);
+void addData(Cache* cache, int index, int tag, int i, int currTime);
+int evictLine(Cache* cache, int index);
+void printBinary(long number);

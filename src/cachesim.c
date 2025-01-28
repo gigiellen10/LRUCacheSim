@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
                 indexBits = atoi(optarg);
 
                 // calculate # sets -> 2^b
-                NUM_SETS = pow(2, indexBits);
+                NUM_SETS = 1 << indexBits;
                 break;
             case 'E':
                 // optarg will give the associativity
