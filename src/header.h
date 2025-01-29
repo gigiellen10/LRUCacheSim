@@ -39,6 +39,6 @@ void initCache(Cache* cache);
 void deleteCache(Cache* cache);
 void accessCache(Cache* cache, int index, int tag, int verbose, int* misses, int* hits, int* evictions);
 void outputStats(int hits, int misses, int evictions);
-void addData(Cache* cache, int index, int tag, int i, int currTime);
-int evictLine(Cache* cache, int index);
+void addData(Set* set, int tag, int i, int currTime);
 void printBinary(long number);
+int findReplaceLine(Set* s);
