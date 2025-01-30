@@ -36,7 +36,6 @@ void runSim(FILE* traceFile, int verbose, int indexBits, int blockOffset) {
         calculateBits(addy, &tag, &indexVal, indexBits, blockOffset);
 
         if (verbose) {
-            // Print parsed values (you can store or process them as needed)
             fprintf(stdout, "\n %s %s,%s", token, address, memSize);
         }
 
@@ -69,16 +68,6 @@ void runSim(FILE* traceFile, int verbose, int indexBits, int blockOffset) {
     fclose(traceFile);
 }
 
-void printBinary(long number) {
-    // Assuming a 32-bit integer
-    for (int i = sizeof(long) * 8 - 1; i >= 0; i--) {
-        // Extract the i-th bit using a bitwise AND and a shift
-        int bit = (number >> i) & 1;
-        printf("%d", bit);
-    }
-    
-}
-
 /* helper functions! */
 
 void printUsageInfo() {
@@ -98,10 +87,10 @@ void printUsageInfo() {
 void accessCache(Cache* cache, int index, int tag, int verbose, int* misses, int* hits, int* evictions) {
     int isHit = FALSE, i = 0;
     
-    // Map the index to the set
-    Set* s = &cache->sets[index]; // Use a pointer for direct access to the set
+    // use the index key to find the correct seet
+    Set* s = &cache->sets[index]; 
 
-    // Traverse the lines in the set, looking for the tag
+    // look for a line with the tag and valid bit = true
     for (; i < ASSOC; ++i) {
         if (s->lines[i].validBit && s->lines[i].tagBits == tag) {
             
@@ -146,7 +135,7 @@ int findReplaceLine(Set* s) {
         }
 
         if (s->lines[i].lastAccessed < lruMin) {
-            lruMin = s->lines[i].lastAccessed; // Update minimum LRU timestamp
+            lruMin = s->lines[i].lastAccessed; // update minimum LRU timestamp
             lruIndex = i;
         }
     }
@@ -197,7 +186,7 @@ void outputStats(int hits, int misses, int evictions, int verbose) {
 }
 
 /*
-    Frees all dynamic memory associated with the cache struct
+    frees all dynamic memory associated with the cache struct
 */
 void deleteCache(Cache* cache) {
     
