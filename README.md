@@ -2,14 +2,14 @@
 
 > **Note:** This program was developed in a **Linux environment** and runs best in that setting.  
 
-## 🔧 Building the Executable  
+# 🔧 Building the Executable  
 
 Run the following commands in your terminal to compile the program:  
 
 ![image](https://github.com/user-attachments/assets/9a42a678-46af-4275-b04d-05ae8e27332d)  
 ![image](https://github.com/user-attachments/assets/46d10112-df23-45a7-909e-933ffcbb8d6d)  
 
-## ▶️ Running the Program  
+# ▶️ Running the Program  
 
 Execute the program using the following flags and format:  
 
@@ -22,7 +22,7 @@ Execute the program using the following flags and format:
 - **Same output without verbose mode:**  
   ![image](https://github.com/user-attachments/assets/6ae6c0f0-e8b3-4c25-828d-035f0fb614fd)  
 
-## 📊 Output Explanation  
+# 📊 Output Explanation  
 
 The program simulates an **LRU (Least Recently Used) cache** using Valgrind memory traces and provides the following statistics:  
 
